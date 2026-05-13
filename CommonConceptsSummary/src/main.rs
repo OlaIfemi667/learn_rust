@@ -1,5 +1,3 @@
-use core::str;
-
 fn main() {
     let temp_farenheit: f32 = 50.0;
     let temp_celcius = fahrenheit_to_celcius(temp_farenheit);
