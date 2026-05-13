@@ -1,0 +1,42 @@
+#[derive(Debug)] // tres utiles parce qu'il permet d'ajouter des traits aux structs (eg: on peut
+                 // utiliser ==  et != plus facilement en nos structs)
+struct Rectangle{
+    width: u32,
+    height: u32
+}
+
+impl Rectangle {
+
+    fn area(&self) -> u32 // "&self" est un shortcut pour "self: &Self" ce qui fait sens
+    {
+        self.height * self.width
+    }
+
+    fn change_width(&mut self, width: u32){
+        self.width = width
+    }
+
+    fn can_hold(&self, autre_rectangle: &Rectangle) -> bool{
+        self.width > autre_rectangle.width && self.height > autre_rectangle.height
+    }
+}
+
+fn main() {
+    let mut my_rectangle = Rectangle {
+        width: 30,
+        height: 60,
+    };
+
+    dbg!(&my_rectangle);
+    println!("Voici le rectangle {my_rectangle:#?}");
+    println!("Rectangle area {}", my_rectangle.area());
+
+    println!("Ici je change le width du rectangle");
+    my_rectangle.change_width(50);
+    dbg!(&my_rectangle);
+    println!("Rectangle area {}", my_rectangle.area());
+
+
+}
+
+
